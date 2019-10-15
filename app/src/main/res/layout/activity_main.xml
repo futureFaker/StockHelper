@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.MainActivity">
+
+    <include layout="@layout/layout_tool_bar" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0"
+        android:overScrollMode="never"/>
+
+    <com.jpeng.jptabbar.JPTabBar
+        android:id="@+id/tabBar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="#fff"
+        app:TabTextSize="12sp"
+        app:TabNormalColor="@color/color515151"
+        app:TabSelectColor="@color/colorD81E06"
+        app:TabPageAnimateEnable="true"
+        app:TabGradientEnable="true"/>
+
+</LinearLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="main_color">#D81E06</color>
+    <color name="main_color_dart">#751c08</color>
+    <color name="colorFFFFFF">#FFFFFF</color>
+    <color name="color515151">#515151</color>
+    <color name="colorD81E06">#D81E06</color>
+    <color name="colorE06441">#e06441</color>
+    <color name="colorF5B133">#F5B133</color>
+    <color name="colorECF00E">#ECF00E</color>
+    <color name="colorA5ED15">#A5ED15</color>
+    <color name="color15EDDF">#15EDDF</color>
+    <color name="color15ED41">#15ED41</color>
+</resources>

@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">StockHelper</string>
+
+    <string name="today_stock">今日</string>
+    <string name="self_selected">自选</string>
+    <string name="history_data">历史</string>
+    <string name="position">持仓</string>
+
+    <string name="today_stock_title">今日选股</string>
+    <string name="self_selected_title">自选股票</string>
+    <string name="history_data_title">历史数据</string>
+
+    <string name="transition_name_stock_name">stock_name</string>
+    <string name="transition_name_stock_code">stock_code</string>
+    <string name="transition_name_stock_selected">stock_selected</string>
+    <string name="transition_name_stock_bought">stock_bought</string>
+
+</resources>
