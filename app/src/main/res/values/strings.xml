@@ -14,5 +14,6 @@
     <string name="transition_name_stock_code">stock_code</string>
     <string name="transition_name_stock_selected">stock_selected</string>
     <string name="transition_name_stock_bought">stock_bought</string>
-
+    <string name="transition_name_tablayout">tablayout</string>
+    <string name="transition_name_viewpager">viewpager</string>
 </resources>

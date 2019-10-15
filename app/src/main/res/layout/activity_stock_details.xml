@@ -10,11 +10,13 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="48dp" />
+        android:layout_height="48dp"
+        />
 
     <com.lc.stockhelper.ui.widget.NoTouchScrollViewpager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="400dp" />
+        android:layout_height="400dp"
+        />
 
 </LinearLayout>

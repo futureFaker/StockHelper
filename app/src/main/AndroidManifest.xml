@@ -40,8 +40,7 @@
             android:screenOrientation="portrait">
         </activity>
         <activity android:name=".ui.StockDetailsLandActivity"
-            android:screenOrientation="landscape"
-            android:theme="@style/FullscreenTheme">
+            android:screenOrientation="landscape">
         </activity>
         <activity android:name=".ui.SplashActivity"
             android:screenOrientation="portrait"
