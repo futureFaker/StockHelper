@@ -11,8 +11,8 @@ android {
         applicationId "com.lc.stockhelper"
         minSdkVersion 22
         targetSdkVersion 26
-        versionCode 17
-        versionName "1.1.7"
+        versionCode 18
+        versionName "1.1.8"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -28,6 +28,23 @@ android {
     }
     androidExtensions {
         experimental = true
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file("key.store")
+            storePassword "297015834"
+            keyAlias "lckid"
+            keyPassword "297015834"
+        }
+
+        release {
+            storeFile file("key.store")
+            storePassword "297015834"
+            keyAlias "lckid"
+            keyPassword "297015834"
+        }
+
     }
 }
 
