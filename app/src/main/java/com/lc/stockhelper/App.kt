@@ -2,7 +2,7 @@ package com.lc.stockhelper
 
 import android.app.Application
 import com.lc.stockhelper.extensions.DelegatesExt
-import com.tencent.bugly.crashreport.CrashReport
+import com.tencent.bugly.Bugly
 
 /**
  * Created by KID on 2019-09-20.
@@ -16,7 +16,7 @@ class App : Application(){
     override fun onCreate() {
         super.onCreate()
         instance = this
-        CrashReport.initCrashReport(getApplicationContext(), "23921215bb", false);
+        Bugly.init(getApplicationContext(), "23921215bb", false);
     }
 
 }

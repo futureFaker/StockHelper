@@ -11,8 +11,8 @@ android {
         applicationId "com.lc.stockhelper"
         minSdkVersion 22
         targetSdkVersion 26
-        versionCode 15
-        versionName "1.1.5"
+        versionCode 17
+        versionName "1.1.7"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -57,5 +57,5 @@ dependencies {
     implementation 'org.greenrobot:eventbus:3.1.1'
     implementation 'com.google.android.material:material:1.0.0'
     implementation project(path: ':MPChartLib')
-    implementation 'com.tencent.bugly:crashreport:3.1.0'
+    implementation 'com.tencent.bugly:crashreport_upgrade:1.4.2'
 }
