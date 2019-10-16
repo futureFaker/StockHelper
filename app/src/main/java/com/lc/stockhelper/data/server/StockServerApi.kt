@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON
 import com.github.kittinunf.fuel.httpGet
 import com.github.kittinunf.result.Result
 import com.lc.stockhelper.data.Stock
+import com.lc.stockhelper.data.StockDetail
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -36,28 +37,32 @@ class StockServerApi {
             return@withContext ArrayList<Stock>()
         }
 
-        suspend fun getStockDetails(stock: Stock):String = withContext(Dispatchers.IO) {
-            val (_, _, result) = (STOCK_DETAILS_URL + "code=${stock.code}&num=100").httpGet().responseString()
+        suspend fun getStockDayDetails(stock: Stock):ArrayList<StockDetail> = withContext(Dispatchers.IO) {
+            val (_, _, result) = (STOCK_DETAILS_URL + "c=${stock.code}&a=-100&t=day").httpGet().responseString()
             when (result) {
                 is Result.Failure -> {
                     val ex = result.getException()
-                    println("getStockDetails ："+ex)
+                    println("getStockDayDetails ："+ex)
                 }
 
                 is Result.Success -> {
-                    val data = result.get()
+                    val result = result.get()
 
-                    println("getStockDetails ："+data)
+                    println("getStockDayDetails ："+result)
+                    val json = JSON.parseObject(result)
+                    val date = json.getString("data")
 
-                    return@withContext data
+                    val stockDetails = JSON.parseArray(date,StockDetail::class.java) as ArrayList
+
+                    return@withContext stockDetails
                 }
             }
 
-            return@withContext ""
+            return@withContext ArrayList<StockDetail>()
         }
 
-        suspend fun getStockWeekDetails(stock: Stock):String = withContext(Dispatchers.IO) {
-            val (_, _, result) = (STOCK_DETAILS_URL + "code=${stock.code}&num=100&type=week").also {
+        suspend fun getStockWeekDetails(stock: Stock):ArrayList<StockDetail> = withContext(Dispatchers.IO) {
+            val (_, _, result) = (STOCK_DETAILS_URL + "c=${stock.code}&a=-100&t=week").also {
                 println(it)
             }.httpGet().responseString()
             when (result) {
@@ -67,14 +72,19 @@ class StockServerApi {
                 }
 
                 is Result.Success -> {
-                    val data = result.get()
-                    println("getStockWeekDetails ："+data)
+                    val result = result.get()
 
-                    return@withContext data
+                    println("getStockWeekDetails ："+result)
+                    val json = JSON.parseObject(result)
+                    val date = json.getString("data")
+
+                    val stockDetails = JSON.parseArray(date,StockDetail::class.java) as ArrayList
+
+                    return@withContext stockDetails
                 }
             }
 
-            return@withContext ""
+            return@withContext ArrayList<StockDetail>()
         }
     }
 }

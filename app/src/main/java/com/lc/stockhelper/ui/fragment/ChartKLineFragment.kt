@@ -5,11 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.github.mikephil.charting.stockChart.data.KLineDataManage
 import com.lc.stockhelper.R
+import com.lc.stockhelper.data.StockDetail
 import com.lc.stockhelper.ui.base.CoroutineFragment
+import com.lc.stockhelper.ui.widget.stockChart.data.KLineDataManage
 import kotlinx.android.synthetic.main.fragment_kline.*
-import org.json.JSONObject
 
 
 /**
@@ -20,14 +20,14 @@ class ChartKLineFragment : CoroutineFragment() {
     private var land: Boolean = false//是否横屏
     private var kLineData: KLineDataManage? = null
 
-    private lateinit var data: String
+    private lateinit var data: ArrayList<StockDetail>
     private var type: Int = TYPE_DAY
     protected fun initBase(view: View) {
         kLineData = KLineDataManage(activity as Context)
         combinedchart!!.initChart(land)
 
         //上证指数代码000001.IDX.SH
-        kLineData!!.parseKlineData(JSONObject(data), "000001.IDX.SH", land)
+        kLineData!!.parseKlineData(data, "000001.IDX.SH", land)
         combinedchart!!.setDataToChart(kLineData)
 
         combinedchart!!.getGestureListenerCandle().setCoupleClick {
@@ -52,7 +52,7 @@ class ChartKLineFragment : CoroutineFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         land = arguments!!.getBoolean(KEY_LANDSCAPE)
-        data = arguments!!.getString(KEY_DATA)
+        data = arguments!!.getParcelableArrayList(KEY_DATA)
         type = arguments!!.getInt(KEY_TYPE)
     }
 
@@ -81,10 +81,10 @@ class ChartKLineFragment : CoroutineFragment() {
 
         const val TYPE_DAY = 1
         const val TYPE_WEEK = 2
-        fun newInstance(type: Int, data: String, land: Boolean): ChartKLineFragment {
+        fun newInstance(type: Int, data: ArrayList<StockDetail>, land: Boolean): ChartKLineFragment {
             val fragment = ChartKLineFragment()
             val bundle = Bundle()
-            bundle.putString(KEY_DATA, data)
+            bundle.putParcelableArrayList(KEY_DATA, data)
             bundle.putBoolean(KEY_LANDSCAPE, land)
             bundle.putInt(KEY_TYPE, type)
             fragment.arguments = bundle

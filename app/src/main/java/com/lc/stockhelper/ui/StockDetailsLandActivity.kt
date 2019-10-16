@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import com.gyf.barlibrary.ImmersionBar
 import com.lc.stockhelper.R
 import com.lc.stockhelper.data.Stock
+import com.lc.stockhelper.data.StockDetail
 import com.lc.stockhelper.ui.adapter.SimpleFragmentPagerAdapter
 import com.lc.stockhelper.ui.base.ToolbarActivity
 import com.lc.stockhelper.ui.fragment.ChartKLineFragment
@@ -28,8 +29,8 @@ class StockDetailsLandActivity : ToolbarActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val dayData = intent.extras.getString(KEY_DAY_DATA)
-        val weekData = intent.extras.getString(KEY_WEEK_DATA)
+        val dayData = intent.extras.getParcelableArrayList<StockDetail>(KEY_DAY_DATA)
+        val weekData = intent.extras.getParcelableArrayList<StockDetail>(KEY_WEEK_DATA)
 
         val stock = intent.extras.getParcelable(KEY_STOCK) as Stock
 

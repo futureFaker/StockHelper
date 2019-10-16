@@ -11,8 +11,8 @@ android {
         applicationId "com.lc.stockhelper"
         minSdkVersion 22
         targetSdkVersion 26
-        versionCode 18
-        versionName "1.1.8"
+        versionCode 19
+        versionName "1.1.9"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

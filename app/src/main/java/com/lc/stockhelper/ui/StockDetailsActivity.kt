@@ -106,57 +106,52 @@ class StockDetailsActivity : ToolbarActivity() {
 
     private fun getStockDetails() {
         launch {
-            val dayData = StockServerApi.getStockDetails(stock)
+            val dayData = StockServerApi.getStockDayDetails(stock)
             val weekData = StockServerApi.getStockWeekDetails(stock)
-            if (!dayData.isEmpty()) {
 
-
-                val fragments = arrayOf<Fragment>(
-                    ChartKLineFragment.newInstance(
-                        ChartKLineFragment.TYPE_DAY,
-                        dayData,
-                        false
-                    ).apply {
-                        onClickListener = View.OnClickListener {
-                            val intent =
-                                Intent(this@StockDetailsActivity, StockDetailsLandActivity::class.java)
-                            intent.putExtra(StockDetailsLandActivity.KEY_STOCK, stock)
-                            intent.putExtra(StockDetailsLandActivity.KEY_DAY_DATA, dayData)
-                            intent.putExtra(StockDetailsLandActivity.KEY_WEEK_DATA, weekData)
-                            intent.putExtra(StockDetailsLandActivity.KEY_INDEX,0)
-                            startActivity(intent)
-                        }
-                    },
-                    ChartKLineFragment.newInstance(
-                        ChartKLineFragment.TYPE_WEEK,
-                        weekData,
-                        false
-                    ).apply {
-                        onClickListener = View.OnClickListener {
-                            val intent =
-                                Intent(this@StockDetailsActivity, StockDetailsLandActivity::class.java)
-                            intent.putExtra(StockDetailsLandActivity.KEY_STOCK, stock)
-                            intent.putExtra(StockDetailsLandActivity.KEY_DAY_DATA, dayData)
-                            intent.putExtra(StockDetailsLandActivity.KEY_WEEK_DATA, weekData)
-                            intent.putExtra(StockDetailsLandActivity.KEY_INDEX,1)
-                            startActivity(intent)
-                        }
+            val fragments = arrayOf<Fragment>(
+                ChartKLineFragment.newInstance(
+                    ChartKLineFragment.TYPE_DAY,
+                    dayData,
+                    false
+                ).apply {
+                    onClickListener = View.OnClickListener {
+                        val intent =
+                            Intent(this@StockDetailsActivity, StockDetailsLandActivity::class.java)
+                        intent.putExtra(StockDetailsLandActivity.KEY_STOCK, stock)
+                        intent.putParcelableArrayListExtra(StockDetailsLandActivity.KEY_DAY_DATA, dayData)
+                        intent.putParcelableArrayListExtra(StockDetailsLandActivity.KEY_WEEK_DATA, weekData)
+                        intent.putExtra(StockDetailsLandActivity.KEY_INDEX, 0)
+                        startActivity(intent)
                     }
-                    //ChartKLineFragment.newInstance(30, false)
+                },
+                ChartKLineFragment.newInstance(
+                    ChartKLineFragment.TYPE_WEEK,
+                    weekData,
+                    false
+                ).apply {
+                    onClickListener = View.OnClickListener {
+                        val intent =
+                            Intent(this@StockDetailsActivity, StockDetailsLandActivity::class.java)
+                        intent.putExtra(StockDetailsLandActivity.KEY_STOCK, stock)
+                        intent.putParcelableArrayListExtra(StockDetailsLandActivity.KEY_DAY_DATA, dayData)
+                        intent.putParcelableArrayListExtra(StockDetailsLandActivity.KEY_WEEK_DATA, weekData)
+                        intent.putExtra(StockDetailsLandActivity.KEY_INDEX, 1)
+                        startActivity(intent)
+                    }
+                }
+                //ChartKLineFragment.newInstance(30, false)
+            )
+            val titles = arrayOf("日K", "周K")
+            viewPager.setOffscreenPageLimit(fragments.size)
+            viewPager.setAdapter(
+                SimpleFragmentPagerAdapter(
+                    supportFragmentManager,
+                    fragments,
+                    titles
                 )
-
-
-                val titles = arrayOf("日K", "周K")
-                viewPager.setOffscreenPageLimit(fragments.size)
-                viewPager.setAdapter(
-                    SimpleFragmentPagerAdapter(
-                        supportFragmentManager,
-                        fragments,
-                        titles
-                    )
-                )
-                tabLayout.setupWithViewPager(viewPager)
-            }
+            )
+            tabLayout.setupWithViewPager(viewPager)
 
         }
     }

@@ -4,6 +4,7 @@ import android.os.Parcel
 import android.os.Parcelable
 import com.lc.stockhelper.R
 import com.lc.stockhelper.utils.getTodayTimestamp
+import kotlinx.android.parcel.Parcelize
 
 /**
  * Created by KID on 2019-09-30.
@@ -102,14 +103,21 @@ data class StockAction(
     val action:Int
 )
 
-data class StockDaily(
-    val date: String,
-    val openPrice: Double,
-    val closePrice: Double,
-    val minPrice: Double,
-    val maxPrice: Double,
-    val change: Double
-)
+@Parcelize
+data class StockDetail(
+    val hsl:Double,     //换手率
+    val cje:Double,     //成交额
+    val zdf:Double,     //涨跌幅
+    val date:Long,    //日期
+    val cjl:Double,     //成交额
+    val open:Double,    //开盘价
+    val high:Double,    //最高价
+    val low:Double,     //最低价
+    val close:Double    //收盘价
+
+):Parcelable{
+
+}
 
 
 

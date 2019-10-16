@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.github.mikephil.charting.stockChart.view.KLineView
+    <com.lc.stockhelper.ui.widget.stockChart.view.KLineView
         android:id="@+id/combinedchart"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
