@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">StockHelper</string>
+    <string name="app_name">巴飞策选股</string>
 
     <string name="today_stock">今日</string>
     <string name="self_selected">自选</string>

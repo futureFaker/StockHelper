@@ -27,7 +27,7 @@ class SplashActivity : AppCompatActivity(){
         val config = ParticleTextViewConfig.Builder()
             .setRowStep(6)
             .setColumnStep(6)
-            .setTargetText("StockHelper")
+            .setTargetText("巴飞策选股")
             .setReleasing(0.2)
             .setParticleRadius(2f)
             .setMiniDistance(0.1)
