@@ -123,7 +123,7 @@ public class KLineDataManage {
                 int len = datas.size();
                 for (int i = 0; i < len - 10; i++) {
                     KLineDataModel klineDatamodel = new KLineDataModel();
-                    int index = i;
+                    int index = len - i - 11;
 
                     StockDetail stockDetail = datas.get(index);
 

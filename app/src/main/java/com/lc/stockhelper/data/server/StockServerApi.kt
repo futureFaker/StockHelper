@@ -53,8 +53,7 @@ class StockServerApi {
                     val date = json.getString("data")
 
                     val stockDetails = JSON.parseArray(date,StockDetail::class.java) as ArrayList
-
-                    return@withContext stockDetails
+                    return@withContext stockDetails.reversed() as ArrayList<StockDetail>
                 }
             }
 
@@ -79,8 +78,7 @@ class StockServerApi {
                     val date = json.getString("data")
 
                     val stockDetails = JSON.parseArray(date,StockDetail::class.java) as ArrayList
-
-                    return@withContext stockDetails
+                    return@withContext stockDetails.reversed() as ArrayList<StockDetail>
                 }
             }
 
