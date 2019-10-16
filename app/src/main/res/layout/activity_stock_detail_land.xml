@@ -7,15 +7,28 @@
     android:background="@android:color/white"
     android:orientation="vertical">
 
-    <include layout="@layout/layout_tool_bar" />
-
-
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        app:tabGravity="fill"
-        />
+        android:layout_height="48dp">
+
+        <TextView
+            android:id="@+id/tvStockInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/color515151"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"/>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:tabGravity="fill"
+            />
+
+    </RelativeLayout>
+
 
     <com.lc.stockhelper.ui.widget.NoTouchScrollViewpager
         android:id="@+id/viewPager"

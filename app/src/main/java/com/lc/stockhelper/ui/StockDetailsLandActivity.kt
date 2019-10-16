@@ -2,19 +2,18 @@ package com.lc.stockhelper.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.gyf.barlibrary.ImmersionBar
 import com.lc.stockhelper.R
 import com.lc.stockhelper.data.Stock
 import com.lc.stockhelper.data.StockDetail
 import com.lc.stockhelper.ui.adapter.SimpleFragmentPagerAdapter
-import com.lc.stockhelper.ui.base.ToolbarActivity
+import com.lc.stockhelper.ui.base.CoroutineActivity
 import com.lc.stockhelper.ui.fragment.ChartKLineFragment
-import kotlinx.android.synthetic.main.activity_stock_details.*
+import kotlinx.android.synthetic.main.activity_stock_detail_land.*
 
 /**
  * Created by KID on 2019-10-11.
  */
-class StockDetailsLandActivity : ToolbarActivity() {
+class StockDetailsLandActivity : CoroutineActivity() {
 
     companion object {
         const val KEY_STOCK = "key_stock"
@@ -22,29 +21,17 @@ class StockDetailsLandActivity : ToolbarActivity() {
         const val KEY_WEEK_DATA = "key_week_data"
         const val KEY_INDEX = "key_index"
     }
-
-    override fun layoutId(): Int {
-        return R.layout.activity_stock_detail_land
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_stock_detail_land)
         val dayData = intent.extras.getParcelableArrayList<StockDetail>(KEY_DAY_DATA)
         val weekData = intent.extras.getParcelableArrayList<StockDetail>(KEY_WEEK_DATA)
 
         val stock = intent.extras.getParcelable(KEY_STOCK) as Stock
 
         val index = intent.extras.getInt(KEY_INDEX)
-        ImmersionBar.with(this)
-            .statusBarColor(stock.getTypeColor())
-            .fitsSystemWindows(true)
-            .init()
 
-        setTitleText(stock.name)
-        setTitle2Text("(" + stock.code + ")")
-
-        setToolbarBackground(stock.getTypeColor())
-        enableNavigation()
+        tvStockInfo.text = stock.name+"(${stock.code})"
 
         val fragments = arrayOf<Fragment>(
             ChartKLineFragment.newInstance(ChartKLineFragment.TYPE_DAY, dayData, true),

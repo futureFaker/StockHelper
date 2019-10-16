@@ -41,6 +41,7 @@
             android:screenOrientation="portrait">
         </activity>
         <activity android:name=".ui.StockDetailsLandActivity"
+            android:theme="@style/FullscreenTheme"
             android:screenOrientation="landscape">
         </activity>
         <activity android:name=".ui.SplashActivity"
